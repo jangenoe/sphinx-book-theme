@@ -202,41 +202,41 @@ def add_launch_buttons(
         )
         context["use_thebe"] = True
 
-    path_rel_repoA=path_rel_repo[:path_rel_repo.index("/")+1]
-    path_rel_repoB=path_rel_repo[path_rel_repo.index("/")+1:]
+    path_rel_repoA = path_rel_repo[:path_rel_repo.index("/") + 1]
+    path_rel_repoB = path_rel_repo[path_rel_repo.index("/") + 1:]
     
     url = f"../Lite/{path_rel_repoA}lab?path={path_rel_repoB}"
     launch_buttons_list.append(
-            {
-                "type": "link",
-                "text": "JupyterLite",
-                "tooltip": translation("Launch on") + " JupyterLite",
-                "icon": "_static/images/logo_jupyterlite.svg",
-                "url": url,
-            }
-        )
+        {
+            "type": "link",
+            "text": "JupyterLite",
+            "tooltip": translation("Launch on") + " JupyterLite",
+            "icon": "_static/images/logo_jupyterlite.svg",
+            "url": url,
+        }
+    )
 
-    url = f"./slides/{path_rel_repoB}"[:-5]+"slides.html"
+    url = f"./slides/{path_rel_repoB}"[:-5] + "slides.html"
     launch_buttons_list.append(
-            {
-                "type": "link",
-                "text": "Reveal.js",
-                "tooltip": "Slides bekijken met Reveal.js",
-                "icon": "_static/images/Logo_revealjs.png",
-                "url": url,
-            }
-        )
+        {
+            "type": "link",
+            "text": "Reveal.js",
+            "tooltip": "Slides bekijken met Reveal.js",
+            "icon": "_static/images/Logo_revealjs.png",
+            "url": url,
+        }
+    )
         
     url = f"../Deck/{path_rel_repoA}lab?path={path_rel_repoB}"
     launch_buttons_list.append(
-            {
-                "type": "link",
-                "text": "JupyterDeck",
-                "tooltip": translation("Launch on") + " JupyterDeck",
-                "icon": "_static/images/logo_jupyterdeck.svg",
-                "url": url,
-            }
-        )
+        {
+            "type": "link",
+            "text": "JupyterDeck",
+            "tooltip": translation("Launch on") + " JupyterDeck",
+            "icon": "_static/images/logo_jupyterdeck.svg",
+            "url": url,
+        }
+    )
 
     # Add the buttons to header_buttons
     header_buttons.append(
