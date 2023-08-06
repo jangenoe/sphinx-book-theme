@@ -202,6 +202,37 @@ def add_launch_buttons(
         )
         context["use_thebe"] = True
 
+    url = f"../Lite/ToegepasteAnalogeElektronica/lab?path={path_rel_repo}"
+    launch_buttons_list.append(
+            {
+                "type": "link",
+                "text": "JupyterLite",
+                "tooltip": translation("Launch on") + "JupyterLite",
+                "icon": "_static/images/logo_jupyterlite.svg",
+                "url": url,
+            }
+        )
+    url = f"./slides/{path_rel_repo}"[:-5]+"slides.html"
+    launch_buttons_list.append(
+            {
+                "type": "link",
+                "text": "Reveal.js",
+                "tooltip": "Slides bekijken met Reveal.js",
+                "icon": "_static/images/Logo_revealjs.png",
+                "url": url,
+            }
+        )
+    url = f"../Deck/ToegepasteAnalogeElektronica/lab?path={path_rel_repo}"
+    launch_buttons_list.append(
+            {
+                "type": "link",
+                "text": "JupyterDeck",
+                "tooltip": translation("Launch on") + "JupyterDeck",
+                "icon": "_static/images/logo_jupyterdeck.svg",
+                "url": url,
+            }
+        )
+
     # Add the buttons to header_buttons
     header_buttons.append(
         {

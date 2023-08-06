@@ -26,9 +26,3 @@ jobs:
           sudo apt-get install gettext
           python -m pip install -U pip build
           python -m build
-
-      - name: Publish
-        uses: pypa/gh-action-pypi-publish@v1.8.7
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_KEY }}
