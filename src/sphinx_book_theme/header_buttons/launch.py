@@ -202,17 +202,21 @@ def add_launch_buttons(
         )
         context["use_thebe"] = True
 
-    url = f"../Lite/ToegepasteAnalogeElektronica/lab?path={path_rel_repo}"
+    path_rel_repoA=path_rel_repo[:path_rel_repo.index("/")+1]
+    path_rel_repoB=path_rel_repo[path_rel_repo.index("/")+1:]
+    
+    url = f"../Lite/{path_rel_repoA}lab?path={path_rel_repoB}"
     launch_buttons_list.append(
             {
                 "type": "link",
                 "text": "JupyterLite",
-                "tooltip": translation("Launch on") + "JupyterLite",
+                "tooltip": translation("Launch on") + " JupyterLite",
                 "icon": "_static/images/logo_jupyterlite.svg",
                 "url": url,
             }
         )
-    url = f"./slides/{path_rel_repo}"[:-5]+"slides.html"
+
+    url = f"./slides/{path_rel_repoB}"[:-5]+"slides.html"
     launch_buttons_list.append(
             {
                 "type": "link",
@@ -222,12 +226,13 @@ def add_launch_buttons(
                 "url": url,
             }
         )
-    url = f"../Deck/ToegepasteAnalogeElektronica/lab?path={path_rel_repo}"
+        
+    url = f"../Deck/{path_rel_repoA}lab?path={path_rel_repoB}"
     launch_buttons_list.append(
             {
                 "type": "link",
                 "text": "JupyterDeck",
-                "tooltip": translation("Launch on") + "JupyterDeck",
+                "tooltip": translation("Launch on") + " JupyterDeck",
                 "icon": "_static/images/logo_jupyterdeck.svg",
                 "url": url,
             }
