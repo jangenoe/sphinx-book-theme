@@ -23,6 +23,7 @@ jobs:
     - uses: pre-commit/action@v3.0.0
 
   tests:
+    continue-on-error: ${{ matrix.experimental || false }}
     strategy:
       fail-fast: false
       matrix:
@@ -34,16 +35,16 @@ jobs:
         sphinx: ["~=5.0","~=6.0","~=7.0"]
         include:
         - os: windows-latest
-          python-version: 3.11
-          sphinx: ">=6,<7"
+          python-version: 3.x
+          # Windows pulling in dependencies fails
+          experimental: true
         - os: macos-latest
-          python-version: 3.11
-          sphinx: ">=6,<7"
+          python-version: 3.x
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }} and Sphinx ${{ matrix.sphinx }}
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
@@ -51,8 +52,8 @@ jobs:
 
     - name: Install dependencies with Sphinx ${{ matrix.sphinx }}
       run: |
-        pip install --upgrade pip
-        pip install --upgrade "sphinx${{matrix.sphinx}}" -e .[test]
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade "sphinx${{matrix.sphinx}}" -e .[test] --pre
 
     - name: Run pytest
       run: >
