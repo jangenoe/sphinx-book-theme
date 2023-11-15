@@ -202,10 +202,9 @@ def add_launch_buttons(
         )
         context["use_thebe"] = True
 
-    path_rel_repoA = path_rel_repo[:path_rel_repo.index("/") + 1]
     path_rel_repoB = path_rel_repo[path_rel_repo.index("/") + 1:]
     
-    url = f"../Lite/{path_rel_repoA}lab?path={path_rel_repoB}"
+    url = f"./Lite/lab?path={path_rel_repoB}"
     launch_buttons_list.append(
         {
             "type": "link",
@@ -226,8 +225,19 @@ def add_launch_buttons(
             "url": url,
         }
     )
-        
-    url = f"../Deck/{path_rel_repoA}lab?path={path_rel_repoB}"
+    
+    url = f"./PowerPoint/{path_rel_repoB}"[:-5] + "pptx"
+    launch_buttons_list.append(
+        {
+            "type": "link",
+            "text": "PowerPoint",
+            "tooltip": "Slides bekijken met PowerPoint",
+            "icon": "_static/images/PowerPoint.svg",
+            "url": url,
+        }
+    )
+    
+    url = f"./Deck/lab?path={path_rel_repoB}"
     launch_buttons_list.append(
         {
             "type": "link",
