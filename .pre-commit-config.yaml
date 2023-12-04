@@ -23,7 +23,7 @@ repos:
     - id: trailing-whitespace
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.5
+    rev: v0.1.6
     hooks:
     - id: ruff
       args: ["--fix", "--show-fixes"]
@@ -34,3 +34,14 @@ repos:
     hooks:
       - id: prettier
         types_or: [scss, javascript]
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+    - id: codespell
+      exclude: >
+        (?x)^(
+            docs/reference/kitchen-sink/.*|
+            src/sphinx_book_theme/assets/.*|
+            tests/.*
+        )$
