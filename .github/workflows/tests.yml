@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-python@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: 3.11
     - uses: pre-commit/action@v3.0.0
@@ -47,10 +47,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
         cache: "pip"
+        cache-dependency-path: "pyproject.toml"
 
     - name: Install dependencies with Sphinx ${{ matrix.sphinx }}
       run: |
@@ -59,31 +60,17 @@ jobs:
 
     - name: Run pytest
       run: >
-        pytest --durations=10
-  coverage:
-    runs-on: ubuntu-latest
-    needs: [tests]
+        pytest --durations=10 --cov=sphinx_book_theme --cov-report=xml --cov-report=term-missing
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        cache: "pip"
-
-    - name: Install sphinx-book-theme
-      run: |
-        pip install --upgrade pip
-        pip install -e .[test]
-    - name: Run pytest
-      run: >
-        pytest --cov=sphinx_book_theme --cov-report=xml --cov-report=term-missing
+    # Only upload to codecov on pull requests so that we don't trigger rate limit blocks
     - name: Upload to Codecov
-      if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.9 && github.repository == 'executablebooks/sphinx-book-theme' && github.event_name == 'pull_request'
-      uses: codecov/codecov-action@v3
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.9 && matrix.sphinx == '~=7.0' && github.repository == 'executablebooks/sphinx-book-theme' && github.event_name == 'pull_request'
+      uses: codecov/codecov-action@v3.1.4
       with:
-        name: pytests
+        name: ebp-sbt-pytests-py3.7
         flags: pytests
+        file: ./coverage.xml
+        fail_ci_if_error: true
 
   # Build the docs and fail if an *unexpected* warning occurs.
   docs-audit:
@@ -92,7 +79,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.9'
         cache: "pip"
@@ -116,10 +103,12 @@ jobs:
       shell: python
       run: |
         from pathlib import Path
+        import re
         text = Path("./warnings.txt").read_text().strip()
-        expected_warning_snippets = ["kitchen-sink", "urllib/parse.py"]
+        expected_warning_patterns = [r"kitchen\-sink", r"urllib/parse\.py", r"Glyph 10024 .*? missing from current font"]
         print("\n=== Sphinx Warnings ===\n\n" + text)  # Print just for reference so we can look at the logs
-        unexpected = [ii for ii in text.split("\n") if not any(snippet in ii for snippet in expected_warning_snippets)]
+        unexpected = [l for l in text.splitlines() if not any(re.search(p, ii) for p in expected_warning_patterns)]
+        assert len(unexpected) == 0, unexpected
         assert len(unexpected) == 0
 
     - name: Audit with Lighthouse
