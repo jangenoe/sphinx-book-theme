@@ -48,7 +48,7 @@ def add_launch_buttons(
         or not _is_notebook(app, context)
         or not any(
             launch_buttons.get(key)
-            for key in ("binderhub_url", "jupyterhub_url", "thebe", "colab_url")
+            for key in ("binderhub_url", "jupyterhub_url", "thebe", "colab_url", "use_lite_button", "use_reveal_button", "use_powerpoint_button", "use_deck_button")
         )
     ):
         return
@@ -204,49 +204,53 @@ def add_launch_buttons(
 
     path_rel_repoB = path_rel_repo[path_rel_repo.index("/") + 1:]
     
-    url = f"./Lite/lab?path={path_rel_repoB}"
-    launch_buttons_list.append(
-        {
-            "type": "link",
-            "text": "JupyterLite",
-            "tooltip": translation("Launch on") + " JupyterLite",
-            "icon": "_static/images/logo_jupyterlite.svg",
-            "url": url,
-        }
-    )
+    if launch_buttons.get("use_lite_button", False):
+        url = f"./Lite/lab?path={path_rel_repoB}"
+        launch_buttons_list.append(
+            {
+                "type": "link",
+                "text": "JupyterLite",
+                "tooltip": translation("Launch on") + " JupyterLite",
+                "icon": "_static/images/logo_jupyterlite.svg",
+                "url": url,
+            }
+        )
 
-    url = f"./slides/{path_rel_repoB}"[:-5] + "slides.html"
-    launch_buttons_list.append(
-        {
-            "type": "link",
-            "text": "Reveal.js",
-            "tooltip": "Slides bekijken met Reveal.js",
-            "icon": "_static/images/Logo_revealjs.png",
-            "url": url,
-        }
-    )
-    
-    url = f"./PowerPoint/{path_rel_repoB}"[:-5] + "pptx"
-    launch_buttons_list.append(
-        {
-            "type": "link",
-            "text": "PowerPoint",
-            "tooltip": "Slides bekijken met PowerPoint",
-            "icon": "_static/images/PowerPoint.svg",
-            "url": url,
-        }
-    )
-    
-    url = f"./Deck/lab?path={path_rel_repoB}"
-    launch_buttons_list.append(
-        {
-            "type": "link",
-            "text": "JupyterDeck",
-            "tooltip": translation("Launch on") + " JupyterDeck",
-            "icon": "_static/images/logo_jupyterdeck.svg",
-            "url": url,
-        }
-    )
+    if launch_buttons.get("use_reveal_button", False):
+        url = f"./slides/{path_rel_repoB}"[:-5] + "slides.html"
+        launch_buttons_list.append(
+            {
+                "type": "link",
+                "text": "Reveal.js",
+                "tooltip": "Slides bekijken met Reveal.js",
+                "icon": "_static/images/Logo_revealjs.png",
+                "url": url,
+            }
+        )
+        
+    if launch_buttons.get("use_powerpoint_button", False):
+        url = f"./PowerPoint/{path_rel_repoB}"[:-5] + "pptx"
+        launch_buttons_list.append(
+            {
+                "type": "link",
+                "text": "PowerPoint",
+                "tooltip": "Slides bekijken met PowerPoint",
+                "icon": "_static/images/PowerPoint.svg",
+                "url": url,
+            }
+        )
+        
+    if launch_buttons.get("use_deck_button", False):
+        url = f"./Deck/lab?path={path_rel_repoB}"
+        launch_buttons_list.append(
+            {
+                "type": "link",
+                "text": "JupyterDeck",
+                "tooltip": translation("Launch on") + " JupyterDeck",
+                "icon": "_static/images/logo_jupyterdeck.svg",
+                "url": url,
+            }
+        )
 
     # Add the buttons to header_buttons
     header_buttons.append(
