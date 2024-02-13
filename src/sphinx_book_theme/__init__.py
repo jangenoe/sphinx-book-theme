@@ -22,7 +22,7 @@ from .header_buttons.launch import add_launch_buttons
 from .header_buttons.source import add_source_buttons
 from ._transforms import HandleFootnoteTransform
 
-__version__ = "1.1.1"
+__version__ = "1.1.2"
 """sphinx-book-theme version"""
 
 SPHINX_LOGGER = logging.getLogger(__name__)
@@ -179,10 +179,10 @@ def check_deprecation_keys(app):
             )
 
 
-def update_general_config(app):
+def update_general_config(app, config):
     theme_dir = get_html_theme_path()
 
-    app.config.templates_path.append(os.path.join(theme_dir, "components"))
+    config.templates_path.append(os.path.join(theme_dir, "components"))
 
 
 def update_templates(app, pagename, templatename, context, doctree):
@@ -230,7 +230,7 @@ def setup(app: Sphinx):
     # Themes are initialised immediately before use, thus we cannot
     # rely on an event to set the config - the theme config must be
     # set in setup(app):
-    update_general_config(app)
+    update_general_config(app, app.config)
     # Meanwhile, extensions are initialised _first_, and any config
     # values set during setup() will be overwritten. We must therefore
     # register the `config-inited` event to set these config options
