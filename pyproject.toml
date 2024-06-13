@@ -35,7 +35,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
   "sphinx>=5",
-  "pydata-sphinx-theme>=0.14",
+  "pydata-sphinx-theme>=0.15.2"
 ]
 
 license = { file = "LICENSE" }
@@ -81,6 +81,7 @@ doc = [
 test = [
     "beautifulsoup4",
     "coverage",
+    "defusedxml",
     "myst-nb",
     "pytest",
     "pytest-cov",
