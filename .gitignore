@@ -138,6 +138,8 @@ node_modules/
 # Editors
 .vscode/
 .idea
+.project
+.pydevproject
 
 # Files we create automatically
 docs/content/pydata-content-blocks.md

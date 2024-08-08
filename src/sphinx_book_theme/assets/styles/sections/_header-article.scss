@@ -202,3 +202,16 @@ button.sidebar-toggle.secondary-toggle {
     }
   }
 }
+
+.header-article__inner .header-article-items__end {
+  /* margin-left: auto; */
+  width: 100%;
+}
+
+.header-article-items__end .header-article-item:nth-child(2) {
+  margin-left: auto;
+}
+
+.bd-header-article button#languages {
+  font-size: 1rem;
+}
