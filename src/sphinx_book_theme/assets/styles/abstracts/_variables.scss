@@ -56,6 +56,7 @@ html[data-theme="light"] {
   --sbt-color-announcement: rgb(97, 97, 97);
   // Default primary color (need to adjust on dark theme due to bad contrast)
   --pst-color-primary: #176de8;
+  --pst-color-link: rgb(243, 127, 36);
 }
 
 html[data-theme="dark"] {
@@ -66,4 +67,5 @@ html[data-theme="dark"] {
   --sbt-color-announcement: rgb(97, 97, 97);
   // Desaturate the background
   --pst-color-background: #121212;
+  --pst-color-link: rgb(243, 127, 36);
 }
