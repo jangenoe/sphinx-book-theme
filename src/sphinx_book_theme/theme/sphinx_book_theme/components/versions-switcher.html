@@ -1,4 +1,4 @@
-{% if theme_versions %}
+{% if theme_versions|tobool %}
 <div class="o_versions row">
     <div class="dropdown">
         {%- if alternate_versions|length > 0 %}
