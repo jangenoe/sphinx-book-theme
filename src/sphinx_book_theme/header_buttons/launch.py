@@ -238,7 +238,7 @@ def add_launch_buttons(
             {
                 "type": "link",
                 "text": "Reveal.js",
-                "tooltip": "Slides bekijken met Reveal.js",
+                "tooltip": translation("Launch on") + " Reveal.js",
                 "icon": "_static/images/Logo_revealjs.png",
                 "url": url,
             }
@@ -250,7 +250,7 @@ def add_launch_buttons(
             {
                 "type": "link",
                 "text": "PowerPoint",
-                "tooltip": "Slides bekijken met PowerPoint",
+                "tooltip": translation("Launch on") + " PowerPoint",
                 "icon": "_static/images/PowerPoint.svg",
                 "url": url,
             }
