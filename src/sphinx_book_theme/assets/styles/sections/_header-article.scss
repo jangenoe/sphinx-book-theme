@@ -32,7 +32,7 @@ button.sidebar-toggle.secondary-toggle {
   @media (min-width: variables.$breakpoint-xl) {
     display: none;
   }
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: variables.$breakpoint-md) {
     margin-bottom: 0px;
   }
 }
@@ -147,7 +147,7 @@ button.sidebar-toggle.secondary-toggle {
     // No background on hover. Need important to over-ride the PST which uses it too.
     span,
     i {
-      transition: color $animation-time ease-out;
+      transition: color variables.$animation-time ease-out;
     }
     &:active,
     &:hover {

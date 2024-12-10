@@ -17,7 +17,7 @@
     margin-left variables.$animation-time ease 0s,
     opacity variables.$animation-time ease 0s,
     visibility variables.$animation-time ease 0s;
-	
+
   @media (max-width: variables.$breakpoint-md) {
     // So that tooltips don't overlap
     z-index: variables.$zindex-tooltip + 1;
@@ -37,7 +37,7 @@
 // Default visibility for left sidebar is the reverse of what it is on mobile.
 // It is shown by default, and hidden with a click.
 // Mobile behavior is defined in the pydata sphinx theme
-@media (min-width: $breakpoint-lg) {
+@media (min-width: variables.$breakpoint-lg) {
   input#pst-primary-sidebar-checkbox:checked
     ~ .bd-container
     .bd-sidebar-primary {
