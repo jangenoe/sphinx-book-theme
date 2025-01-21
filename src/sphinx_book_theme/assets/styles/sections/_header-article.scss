@@ -75,6 +75,7 @@ button.sidebar-toggle.secondary-toggle {
   .header-article-item {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
   }
 
   /**
@@ -200,6 +201,16 @@ button.sidebar-toggle.secondary-toggle {
         justify-content: center;
       }
     }
+  }
+}
+
+.header-article__inner .header-article-items__start {
+  /* Display in a row */
+  display: flex;
+  flex-direction: row;
+
+  .header-article-item {
+    padding: 1pt;
   }
 }
 
