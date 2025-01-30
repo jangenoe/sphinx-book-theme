@@ -12,6 +12,8 @@ This extended repository tracks the master branch [sphinx-book-theme] (https://g
 
 ## The following code extensions have been made:
 
+### button for language and version switching have been added (see [MacqGit](https://github.com/MacqGit/sphinx-book-theme/tree/master-language_switcher))
+
 ### in file `src/sphinx_book_theme/header_buttons/launch.py`
 
 at line 52:

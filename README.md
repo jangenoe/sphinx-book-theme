@@ -17,7 +17,7 @@ To get started with this extended `sphinx-book-theme` in jupyter-book, first ins
 
 ```
 pip install git+https://github.com/jangenoe/sphinx-book-theme#egg=sphinx-book-theme
-pip install jupyter-book>=1.0
+pip install jupyter-book==1.*
 ```
 
 ## Documentation and testing
