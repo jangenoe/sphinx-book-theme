@@ -6,4 +6,5 @@
     {% include footer_item %}
   </div>
   {% endfor %}
+  {%- if last_updated %}<p id="footer-last-updated">Last Updated <span>{{ last_updated }}</span>.</p>{% endif %}
 </div>
