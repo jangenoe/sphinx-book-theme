@@ -1,6 +1,6 @@
 # Changelog
 
-This extended repository tracks the master branch [sphinx-book-theme] (https://github.com/executablebooks/sphinx-book-theme).  The most recent commit of the master incorporated is [8822eef](https://github.com/executablebooks/sphinx-book-theme/commit/8822eeff673f14e627925a51070d5eeaf3360dbe)
+This extended repository tracks the master branch [sphinx-book-theme] (https://github.com/executablebooks/sphinx-book-theme).  The most recent commit of the master incorporated is [f76b6c3](https://github.com/executablebooks/sphinx-book-theme/commit/f76b6c3957f4beb105555e319d9e662755d17c95)
 
 ## The following files have been added:
 
