@@ -23,6 +23,8 @@ filterwarnings = [
   '''ignore:'sphinx.util.import_object' is deprecated.:PendingDeprecationWarning''',
   'ignore:Parsing dates involving a day of month without a year specified is ambiguious:DeprecationWarning',
   'ignore:Argument "parser_name" will be removed in Docutils 2.0.:PendingDeprecationWarning',
+  # RemovedInSphinx11Warning triggered in sphinx -- ultimately should be fixed
+  "ignore:'sphinx_book_theme._transforms.HandleFootnoteTransform.app' is deprecated.:PendingDeprecationWarning",
 ]
 
 
@@ -32,7 +34,7 @@ description = "A clean book theme for scientific explanations and documentation 
 dynamic = ["version"]
 readme = "README.md"
 
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
   "sphinx>=7.4.7",
   "pydata-sphinx-theme==0.16.1"
