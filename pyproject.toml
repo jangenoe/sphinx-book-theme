@@ -1,9 +1,9 @@
 [build-system]
-requires = ["sphinx-theme-builder >= 0.2.0a7"]
+requires = ["sphinx-theme-builder @ git+https://github.com/pradyunsg/sphinx-theme-builder.git@main"]
 build-backend = "sphinx_theme_builder"
 
 [tool.sphinx-theme-builder]
-node-version = "20.9.0"
+node-version = "22.9.0"
 theme-name = "sphinx_book_theme"
 additional-compiled-static-assets = [
   "locales/"
@@ -36,7 +36,7 @@ readme = "README.md"
 
 requires-python = ">=3.11"
 dependencies = [
-  "sphinx>=7.4.7",
+  "sphinx>=9.1.0",
   "pydata-sphinx-theme==0.16.1"
 ]
 
@@ -44,8 +44,11 @@ license = { file = "LICENSE" }
 maintainers = [{ name = "Jan Genoe", email = "jangenoe@gmail.com" },]
 
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Framework :: Sphinx",
   "Framework :: Sphinx :: Theme",
   "License :: OSI Approved :: BSD License",
