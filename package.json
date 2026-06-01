@@ -2,7 +2,7 @@
   "name": "sphinx_book_theme",
   "repository": "https://github.com/jangenoe/sphinx-book-theme",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --mode=production"
   },
   "devDependencies": {
     "css-loader": "^7.1.4",
@@ -14,7 +14,7 @@
     "sass-loader": "^16.0.7",
     "webpack": "^5.105.4",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.2.3"
+    "webpack-dev-server": "^5.2.4"
   },
   "dependencies": {
   }
