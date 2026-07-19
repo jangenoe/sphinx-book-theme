@@ -32,16 +32,13 @@ name = "sphinx-book-theme"
 description = "A clean book theme for scientific explanations and documentation with Sphinx"
 dynamic = ["version"]
 readme = "README.md"
-
 requires-python = ">=3.11"
 dependencies = [
-  "sphinx>=8.0,<10",
-  "pydata-sphinx-theme==0.18.0"
+  "sphinx>=8.2,<10",
+  "pydata-sphinx-theme==0.20.0"
 ]
-
 license = { file = "LICENSE" }
 maintainers = [{ name = "Jan Genoe", email = "jan.genoe@gmail.com" },]
-
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Programming Language :: Python :: 3",
